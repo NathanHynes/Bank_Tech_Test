@@ -47,19 +47,20 @@ I would like the statement printed in an easy to read output with both deposits 
 ```
 ```
 As a User,
-I would like the statement to be ordered newest to oldest. 
+I would like the statement to be ordered newest to oldest.
 ```
 
 ## Classes and Methods
 
 ### Account
-Starts with a balance of zero 
-Starts with an empty statement history
-Has a Deposit Method which adds to the balance and pushes that change to the Statement History
-Has a Withdrawal Method which subtracts from the balance and pushes that change to the statement history
- 
+* Starts with a balance of zero
+* Starts with an empty statement history
+* Has a Deposit Method which adds to the balance and pushes that change to the Statement History
+* Has a Withdrawal Method which subtracts from the balance and pushes that change to the statement history
+
 ### Transaction
-Has a create transaction method. This effectively creates an instance of a transaction and saves it with a date, the credit or debit made and the balance after these actions. For which ever action isn’t made this is saved with ‘’. 
-  
+* Has a create transaction method. This effectively creates an instance of a transaction and saves it with a date, the credit or debit made and the balance after these actions.
+* For which ever action isn’t made this is saved with ‘’.
+
 ### Print Statement
-Has a Print Method. This takes an array as an argument, orders it newest to oldest and then prints out the array in the output necessary for the acceptance criteria. 
+* Has a Print Method. This takes an array as an argument, orders it newest to oldest and then prints out the array in the output necessary for the acceptance criteria. 
