@@ -12,25 +12,26 @@
         null,
         null,
         1,
-        2,
+        4,
         null,
         null,
         null
       ],
       "/Users/nathanhynes/Documents/Makers Academy/Projects/Bank_Tech_Test/lib/account.rb": [
         1,
-        null,
         1,
         null,
+        1,
+        2,
         null,
         null,
         1,
-        null,
+        1,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1574092311
+    "timestamp": 1574092883
   }
 }
