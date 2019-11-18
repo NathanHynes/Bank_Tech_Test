@@ -1,5 +1,2 @@
 /**/.DS_Store
 coverage
-./coverage/.resultset.json
-.coverage/*
-**/coverage/
