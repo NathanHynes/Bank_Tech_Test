@@ -57,10 +57,11 @@ I would like the statement to be ordered newest to oldest.
 * Starts with an empty statement history
 * Has a Deposit Method which adds to the balance and pushes that change to the Statement History
 * Has a Withdrawal Method which subtracts from the balance and pushes that change to the statement history
+* Edge Case to consider a user should not be able to withdraw more than their balance, or if their balance is zero. 
 
 ### Transaction
 * Has a create transaction method. This effectively creates an instance of a transaction and saves it with a date, the credit or debit made and the balance after these actions.
 * For which ever action isn’t made this is saved with ‘’.
 
 ### Print Statement
-* Has a Print Method. This takes an array as an argument, orders it newest to oldest and then prints out the array in the output necessary for the acceptance criteria. 
+* Has a Print Method. This takes an array as an argument, orders it newest to oldest and then prints out the array in the output necessary for the acceptance criteria.

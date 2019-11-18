@@ -12,6 +12,7 @@ class Account
   end
 
   def withdraw(amount)
+    return "Sorry you are unable to withdraw more than your balance. Your current balance is #{@balance}" if @balance == 0 || @balance < amount
     @balance -= amount
   end
 
