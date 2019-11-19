@@ -12,7 +12,6 @@ class StatementPrinter
 
   def print(transaction_history)
     statement = @header
-
     transaction_history.each do |transaction|
       date = date_format(transaction[:date])
       balance = money_format(transaction[:balance])
