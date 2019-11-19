@@ -3,11 +3,11 @@
 ## How to Use the programme
 1. Fork this repo
 2. cd into the folder Bank_Tech_Test and run `bundle install` to install the required gems.
-3. In IRB type type `require './lib/account.rb'` in IRB.
+3. In IRB type `require './lib/account.rb'` in IRB.
 4. Next, create a new account by typing `account = Account.new`
-5. Use the command `account.deposit(100)` to deposit an amount of money.
-6. Use the command `account.withdraw(20)` to withdraw an amount of money from your account.
-7. to print your account statement use the command `account.print_statement`.
+5. Use the command `account.deposit(100)` to deposit £100 into your account.
+6. Use the command `account.withdraw(20)` to withdraw £20 from your account.
+7. To print your account statement use the command `account.print_statement`.
 
 ## Requirements
 
@@ -59,13 +59,20 @@ I would like the statement to be ordered newest to oldest.
 ### Account
 * Starts with a balance of zero
 * Starts with an empty statement history
-* Has a Deposit Method which adds to the balance and pushes that change to the Statement History
-* Has a Withdrawal Method which subtracts from the balance and pushes that change to the statement history
-* Edge Case to consider a user should not be able to withdraw more than their balance, or if their balance is zero.
+* Has a Deposit Method which adds to the balance and pushes that change to the transaction history array.
+* Has a Withdrawal Method which subtracts from the balance and pushes that change to the transaction history array
+* Has a print statement method which relies on statement printer class to print the statement.
+* Edge Case to consider: A user should not be able to withdraw more than their balance, or withdraw if their balance is zero.
 
 ### Transaction
-* Has a create transaction method. This effectively creates an instance of a transaction and saves it with a date, the credit or debit made and the balance after these actions.
-* For which ever action isn’t made this is saved with ‘’.
+* Has an event method. This effectively creates an instance of a transaction and saves it as a hash with a date, the credit or debit made and the balance after these actions.
 
 ### Print Statement
-* Has a Print Method. This takes an array as an argument, orders it newest to oldest and then prints out the array in the output necessary for the acceptance criteria.
+* Has a Print Method. This takes an array as an argument and then prints out the array in the output necessary for the acceptance criteria. Also has a few private methods to ensure correct formatting.
+
+## Approach
+ My approach when starting this challenge was to create user stories from the acceptance criteria provided. By doing this a clear structure for the programme emerged and allowed me to carry out further planning. The further planning I carried out was to break down how I envision the programme would look and this meant that 3 clear classes started to emerge. Within these classes I then started thinking about the methods and responsibility each class would have. This meant I could adhere to SRP and no one class would be doing too much. It also helped when it came to naming variables and methods.
+
+## Code Quality and Testing.
+
+I used Rspec to run the tests for the programme. Alongside Rspec I used rubocop for linting and simplecov to ensure I was covering all lines of code.
