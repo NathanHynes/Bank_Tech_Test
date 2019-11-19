@@ -10,7 +10,7 @@ class StatementPrinter
     @new_column = NEW_COLUMN
   end
 
-  def print_statement(transaction_history)
+  def print(transaction_history)
     statement = @header
 
     transaction_history.each do |transaction|
@@ -31,7 +31,7 @@ class StatementPrinter
     if money.is_a? Integer
       return money_format(money) + ' ' + @new_column
     end
-    
+
     return '' + @new_column
   end
 

@@ -19,9 +19,9 @@ describe 'StatementPrinter' do
     end
   end
 
-  describe '#print_statement' do
+  describe '#print' do
     it "returns transaction history in a readable format" do
-      expect(printer.print_statement(transaction_history)).to eq expected_output
+      expect(printer.print(transaction_history)).to eq expected_output
     end
   end
 end

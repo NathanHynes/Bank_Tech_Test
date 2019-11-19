@@ -2,11 +2,14 @@ require 'account'
 require 'timecop'
 
 describe 'Account' do
-  let(:account) { Account.new(transaction) }
+  let(:account) { Account.new(transaction, printer) }
   let(:transaction) { double :transaction }
+  let(:printer) { double :printer, print: expected_output}
   let(:instance_of_transaction) { double :transaction }
   let(:deposit_transaction) { { date: '18/11/2019', deposit: 200, withdrawal: nil, balance: 200 } }
   let(:withdrawal_transaction) { { date: '19/11/2019', deposit: nil, withdrawal: 50, balance: 150 } }
+  let(:expected_output) { "date || credit || debit || balance\n19/11/2019 || || 50.00 || 150.00\n18/11/2019 || 200.00 || || 200.00" }
+
   describe '#deposit' do
 
     before do
@@ -58,6 +61,23 @@ describe 'Account' do
       allow(instance_of_transaction).to receive(:event).and_return(withdrawal_transaction)
       account.withdraw(50)
       expect(account.transaction_history.first).to eq withdrawal_transaction
+    end
+  end
+
+  describe '#print_statement' do
+
+    before do
+      Timecop.freeze(2019, 11, 18)
+      allow(transaction).to receive(:new).and_return(instance_of_transaction)
+      allow(instance_of_transaction).to receive(:event).and_return(deposit_transaction)
+      account.deposit(200)
+    end
+
+    it "prints your transaction history" do
+      Timecop.freeze(2019, 11, 19)
+      allow(instance_of_transaction).to receive(:event).and_return(withdrawal_transaction)
+      account.withdraw(50)
+      expect(account.print_statement).to eq expected_output
     end
   end
 end
