@@ -28,7 +28,7 @@ class Account
   end
 
   def print_statement
-    p @printer.print(@transaction_history)
+    puts @printer.print(@transaction_history)
   end
 
   private
