@@ -14,13 +14,19 @@ class Account
   def deposit(amount)
     @balance += amount
     new_transaction = @transaction.new
-    @transaction_history.unshift(new_transaction.event(deposit: amount, balance: @balance))
+    update_transaction_history(new_transaction.event(deposit: amount, balance: @balance))
   end
 
   def withdraw(amount)
     return "Sorry you are unable to withdraw more than your balance. Your current balance is #{@balance}" if @balance.zero? || @balance < amount
 
     @balance -= amount
+  end
+
+  private
+
+  def update_transaction_history(transaction)
+    @transaction_history.unshift(transaction)
   end
 
 end
