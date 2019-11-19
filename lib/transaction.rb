@@ -4,4 +4,5 @@ class Transaction
     date = Time.now.strftime("%d/%m/%Y")
     return { date: date, deposit: deposit, withdrawal: withdrawal, balance: balance }
   end
+  
 end
