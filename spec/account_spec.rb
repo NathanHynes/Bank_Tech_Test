@@ -22,11 +22,9 @@ describe 'Account' do
       expect { account.withdraw(50) }.to change { account.balance }.by(-50)
     end
 
-    it "should provide a message if the user tries to withdraw more than their current balance" do
+    it "should not allow you to withdraw more than the current balance" do
       account.deposit(100)
-      expect(account.withdraw(150)).to eq(
-        "Sorry you are unable to withdraw more than your balance. Your current balance is #{account.balance}"
-      )
+      expect(account.withdraw(150)).to eq "Sorry you are unable to withdraw more than your balance. Your current balance is #{account.balance}"
     end
   end
 end
