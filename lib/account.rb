@@ -23,8 +23,8 @@ class Account
     return "Sorry you are unable to withdraw more than your balance. Your current balance is #{@balance}" if @balance.zero? || @balance < amount
 
     @balance -= amount
-    new_transaction = @transaction.new
-    update_transaction_history(new_transaction.event(withdraw: amount, balance: @balance))
+    new_withdrawal = @transaction.new
+    update_transaction_history(new_withdrawal.event(withdrawal: amount, balance: @balance))
   end
 
   def print_statement
