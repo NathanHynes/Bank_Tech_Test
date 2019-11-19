@@ -10,7 +10,7 @@ describe 'StatementPrinter' do
     { date: '10/01/2019', deposit: 1000, withdrawal: nil, balance: 1000 }
   ]
   }
-  let(:expected_output) { "date || credit || debit || balance\n14/01/2019 || || 500.00 || 2500.00\n13/01/2019 || 2000.00 || || 3000.00\n10/01/2019 || 1000.00 || || 1000.00" }
+  let(:expected_output) { "date || credit || debit || balance\n14/01/2019 || || 500.00 || 2500.00\n13/01/2019 || 2000.00 || || 3000.00\n10/01/2019 || 1000.00 || || 1000.00\n" }
 
   describe '#money_format' do
     it "returns the amount of money to two decimal places" do
@@ -21,7 +21,7 @@ describe 'StatementPrinter' do
 
   describe '#print' do
     it "returns transaction history in a readable format" do
-      expect(printer.print(transaction_history)).to eq expected_output
+      expect { printer.print(transaction_history) }.to output(expected_output).to_stdout
     end
   end
 end

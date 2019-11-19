@@ -18,7 +18,7 @@ class StatementPrinter
       balance = money_format(transaction[:balance])
       statement += date + transaction_format(transaction[:deposit]) + transaction_format(transaction[:withdrawal]) + balance + @new_line
     end
-    return statement.chomp("\n")
+    puts statement.chomp
   end
 
   def money_format(money)

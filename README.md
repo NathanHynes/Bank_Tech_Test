@@ -9,6 +9,8 @@
 6. Use the command `account.withdraw(20)` to withdraw £20 from your account.
 7. To print your account statement use the command `account.print_statement`.
 
+![screenshot of app running](https://drive.google.com/open?id=1BFdUyvNqcPupCr8A7pa0n654Vyms6_Se)
+
 ## Requirements
 
 * You should be able to interact with your code via a REPL like IRB or the JavaScript console. (You don't need to implement a command line interface that takes input from STDIN.)
