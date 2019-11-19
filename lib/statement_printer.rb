@@ -5,20 +5,18 @@ class StatementPrinter
   NEW_COLUMN = "|| "
 
   def initialize
-    @header = STATEMENT_HEADER
+    @header = STATEMENT_HEADER + NEW_LINE
     @new_line = NEW_LINE
     @new_column = NEW_COLUMN
   end
 
   def print_statement(transaction_history)
-    statement = @header + @new_line
+    statement = @header
 
     transaction_history.each do |transaction|
-      date = transaction[:date] + ' ' + @new_column
-      credit = an_integer?(transaction[:deposit]).to_s + @new_column
-      debit = an_integer?(transaction[:withdrawal]).to_s + @new_column
+      date = date_format(transaction[:date])
       balance = money_format(transaction[:balance])
-      statement += date + credit + debit + balance + @new_line
+      statement += date + transaction_format(transaction[:deposit]) + transaction_format(transaction[:withdrawal]) + balance + @new_line
     end
     return statement.chomp("\n")
   end
@@ -29,11 +27,15 @@ class StatementPrinter
 
   private
 
-  def an_integer?(money)
+  def transaction_format(money)
     if money.is_a? Integer
-      return money_format(money) + ' '
+      return money_format(money) + ' ' + @new_column
     end
+    
+    return '' + @new_column
+  end
 
-    return nil
+  def date_format(date)
+    date + ' ' + @new_column
   end
 end
