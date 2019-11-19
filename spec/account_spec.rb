@@ -77,7 +77,8 @@ describe 'Account' do
       Timecop.freeze(2019, 11, 19)
       allow(instance_of_transaction).to receive(:event).and_return(withdrawal_transaction)
       account.withdraw(50)
-      expect(account.print_statement).to eq expected_output
+      expect(printer).to receive(:print)
+      account.print_statement
     end
   end
 end
