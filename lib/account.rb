@@ -1,14 +1,20 @@
+require_relative 'transaction'
+
 class Account
-  attr_reader :balance
+  attr_reader :balance, :transaction_history
 
   DEFAULT_BALANCE = 0
 
-  def initialize
+  def initialize(transaction = Transaction)
     @balance = DEFAULT_BALANCE
+    @transaction = transaction
+    @transaction_history = []
   end
 
   def deposit(amount)
     @balance += amount
+    new_transaction = @transaction.new
+    @transaction_history.unshift(new_transaction.event(deposit: amount, balance: @balance))
   end
 
   def withdraw(amount)
