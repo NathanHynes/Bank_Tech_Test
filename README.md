@@ -4,6 +4,10 @@
 1. Fork this repo
 2. cd into the folder Bank_Tech_Test and run `bundle install` to install the required gems.
 3. In IRB type type `require './lib/account.rb'` in IRB.
+4. Next, create a new account by typing `account = Account.new`
+5. Use the command `account.deposit(100)` to deposit an amount of money.
+6. Use the command `account.withdraw(20)` to withdraw an amount of money from your account.
+7. to print your account statement use the command `account.print_statement`.
 
 ## Requirements
 
@@ -57,7 +61,7 @@ I would like the statement to be ordered newest to oldest.
 * Starts with an empty statement history
 * Has a Deposit Method which adds to the balance and pushes that change to the Statement History
 * Has a Withdrawal Method which subtracts from the balance and pushes that change to the statement history
-* Edge Case to consider a user should not be able to withdraw more than their balance, or if their balance is zero. 
+* Edge Case to consider a user should not be able to withdraw more than their balance, or if their balance is zero.
 
 ### Transaction
 * Has a create transaction method. This effectively creates an instance of a transaction and saves it with a date, the credit or debit made and the balance after these actions.

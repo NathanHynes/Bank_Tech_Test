@@ -4,7 +4,7 @@ require 'timecop'
 describe 'Account' do
   let(:account) { Account.new(transaction, printer) }
   let(:transaction) { double :transaction }
-  let(:printer) { double :printer, print: expected_output}
+  let(:printer) { double :printer, print: expected_output }
   let(:instance_of_transaction) { double :transaction }
   let(:deposit_transaction) { { date: '18/11/2019', deposit: 200, withdrawal: nil, balance: 200 } }
   let(:withdrawal_transaction) { { date: '19/11/2019', deposit: nil, withdrawal: 50, balance: 150 } }

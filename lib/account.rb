@@ -15,8 +15,8 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    new_transaction = @transaction.new
-    update_transaction_history(new_transaction.event(deposit: amount, balance: @balance))
+    new_deposit = @transaction.new
+    update_transaction_history(new_deposit.event(deposit: amount, balance: @balance))
   end
 
   def withdraw(amount)
