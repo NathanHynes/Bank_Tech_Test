@@ -4,18 +4,12 @@ class BankATM
   NEW_LINE = "\n"
   NEW_COLUMN = "|| "
 
-  def initialize
-    @header = STATEMENT_HEADER + NEW_LINE
-    @new_line = NEW_LINE
-    @new_column = NEW_COLUMN
-  end
-
   def print(transaction_history)
-    statement = @header
+    statement = statement_header_format
     transaction_history.each do |transaction|
       date = date_format(transaction[:date])
       balance = money_format(transaction[:balance])
-      statement += date + transaction_format(transaction[:deposit]) + transaction_format(transaction[:withdrawal]) + balance + @new_line
+      statement += date + transaction_format(transaction[:deposit]) + transaction_format(transaction[:withdrawal]) + balance + "\n"
     end
     puts statement.chomp
   end
@@ -32,13 +26,17 @@ class BankATM
 
   def transaction_format(money)
     if money.is_a? Integer
-      return money_format(money) + ' ' + @new_column
+      return money_format(money) + ' ' + NEW_COLUMN
     end
 
-    return '' + @new_column
+    return '' + NEW_COLUMN
   end
 
   def date_format(date)
-    date + ' ' + @new_column
+    date + ' ' + NEW_COLUMN
+  end
+
+  def statement_header_format
+    return STATEMENT_HEADER + NEW_LINE
   end
 end

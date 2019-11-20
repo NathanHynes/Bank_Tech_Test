@@ -69,8 +69,8 @@ I would like the statement to be ordered newest to oldest.
 ### Transaction
 * Has an event method. This effectively creates an instance of a transaction and saves it as a hash with a date, the credit or debit made and the balance after these actions.
 
-### Print Statement
-* Has a Print Method. This takes an array as an argument and then prints out the array in the output necessary for the acceptance criteria. Also has a few private methods to ensure correct formatting.
+### Bank ATM
+* Has a Print Method. This takes an array as an argument and then prints out the array in the output necessary for the acceptance criteria. Has a withdrawal error message to guard against the edge case specified above. Also has a few private methods to ensure correct formatting.
 
 ## Approach
  My approach when starting this challenge was to create user stories from the acceptance criteria provided. By doing this a clear structure for the programme emerged and allowed me to carry out further planning. The further planning I carried out was to break down how I envisioned the programme would look and this meant that 3 clear classes started to emerge. Within these classes I then started thinking about the methods and responsibility each class would have. This meant I could adhere to SRP and no one class would be doing too much. It also helped when it came to naming variables and methods.

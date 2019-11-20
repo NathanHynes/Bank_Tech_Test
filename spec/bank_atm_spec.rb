@@ -1,7 +1,7 @@
 require 'bank_atm'
 require 'timecop'
 
-describe 'StatementPrinter' do
+describe 'BankATM' do
   let(:bank_atm) { BankATM.new }
 
   let(:transaction_history) { [
