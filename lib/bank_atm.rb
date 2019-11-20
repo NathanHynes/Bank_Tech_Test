@@ -1,4 +1,4 @@
-class StatementPrinter
+class BankATM
 
   STATEMENT_HEADER = 'date || credit || debit || balance'
   NEW_LINE = "\n"
@@ -22,6 +22,10 @@ class StatementPrinter
 
   def money_format(money)
     '%.2f' % money
+  end
+
+  def display_withdrawal_error_message(account_balance)
+    "Sorry you are unable to withdraw more than your balance. Your current balance is #{account_balance}"
   end
 
   private

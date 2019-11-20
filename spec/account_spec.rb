@@ -2,9 +2,9 @@ require 'account'
 require 'timecop'
 
 describe 'Account' do
-  let(:account) { Account.new(transaction, printer) }
+  let(:account) { Account.new(transaction, bank_atm) }
   let(:transaction) { double :transaction }
-  let(:printer) { double :printer, print: expected_output }
+  let(:bank_atm) { double :bank_atm, print: expected_output }
   let(:instance_of_transaction) { double :transaction }
   let(:deposit_transaction) { { date: '18/11/2019', deposit: 200, withdrawal: nil, balance: 200 } }
   let(:withdrawal_transaction) { { date: '19/11/2019', deposit: nil, withdrawal: 50, balance: 150 } }
@@ -52,7 +52,10 @@ describe 'Account' do
 
     it "should not allow you to withdraw more than the current balance" do
       account.deposit(100)
-      expect(account.withdraw(150)).to eq "Sorry you are unable to withdraw more than your balance. Your current balance is #{account.balance}"
+      expect(bank_atm).to receive(:display_withdrawal_error_message)
+      account.withdraw(150)
+      expect(account.balance).to eq 100
+      expect(account.balance).not_to eq(-50)
     end
 
     it "adds a withdrawal transaction to transaction history" do
@@ -77,7 +80,7 @@ describe 'Account' do
       Timecop.freeze(2019, 11, 19)
       allow(instance_of_transaction).to receive(:event).and_return(withdrawal_transaction)
       account.withdraw(50)
-      expect(printer).to receive(:print)
+      expect(bank_atm).to receive(:print)
       account.print_statement
     end
   end
